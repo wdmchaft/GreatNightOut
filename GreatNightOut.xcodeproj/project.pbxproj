@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00380BB13741DE10019B359 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00380BA13741DE10019B359 /* MapKit.framework */; };
+		F02325ED137143A600BADA57 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F02325EB137143A600BADA57 /* AddLocationViewController.m */; };
+		F02325EE137143A600BADA57 /* AddLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02325EC137143A600BADA57 /* AddLocationViewController.xib */; };
+		F029B2851373EAF3005F82B3 /* SyncLocations.h in Sources */ = {isa = PBXBuildFile; fileRef = F029B2831373EAF3005F82B3 /* SyncLocations.h */; };
+		F029B2861373EAF3005F82B3 /* SyncLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = F029B2841373EAF3005F82B3 /* SyncLocations.m */; };
+		F088BD811369EA3F00A7E581 /* OccasionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F088BD801369EA3F00A7E581 /* OccasionViewController.m */; };
+		F088BD841369EB2C00A7E581 /* OccasionNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = F088BD831369EB2C00A7E581 /* OccasionNavController.m */; };
+		F088BD871369EBC000A7E581 /* EventLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F088BD861369EBC000A7E581 /* EventLocationViewController.m */; };
+		F088BD8C1369F42A00A7E581 /* OccasionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F088BD8B1369F42A00A7E581 /* OccasionView.xib */; };
+		F09C5B82136ADC640059BBCD /* NearbyOccasions.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C5B81136ADC630059BBCD /* NearbyOccasions.m */; };
+		F09C5B86136ADFD30059BBCD /* NearbyLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C5B85136ADFD30059BBCD /* NearbyLocations.m */; };
+		F09C5B89136B190B0059BBCD /* SendPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C5B88136B190A0059BBCD /* SendPlist.m */; };
 		F09E15F31369A24500242A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E15F21369A24500242A3B /* UIKit.framework */; };
 		F09E15F51369A24500242A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E15F41369A24500242A3B /* Foundation.framework */; };
 		F09E15F71369A24500242A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E15F61369A24500242A3B /* CoreGraphics.framework */; };
@@ -18,26 +30,68 @@
 		F09E160C1369A24500242A3B /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09E160B1369A24500242A3B /* SecondViewController.m */; };
 		F09E160F1369A24500242A3B /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F09E160D1369A24500242A3B /* FirstView.xib */; };
 		F09E16121369A24500242A3B /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F09E16101369A24500242A3B /* SecondView.xib */; };
+		F09E161C1369A2A000242A3B /* EventLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F09E16191369A2A000242A3B /* EventLocation.m */; };
+		F09E161D1369A2A000242A3B /* LocationGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F09E161B1369A2A000242A3B /* LocationGetter.m */; };
+		F09E16221369A2BB00242A3B /* Occasion.m in Sources */ = {isa = PBXBuildFile; fileRef = F09E161F1369A2BB00242A3B /* Occasion.m */; };
+		F09E16231369A2BB00242A3B /* GreatNightOut.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F09E16201369A2BB00242A3B /* GreatNightOut.xcdatamodeld */; };
+		F09E16251369A39A00242A3B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E16241369A39A00242A3B /* CoreData.framework */; };
+		F09E16271369A3A000242A3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E16261369A3A000242A3B /* CoreLocation.framework */; };
+		F09E163E1369AFF400242A3B /* EventLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F09E163D1369AFF400242A3B /* EventLocationView.xib */; };
+		F09E165F1369E0E900242A3B /* EventLocationNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09E165E1369E0E900242A3B /* EventLocationNavController.m */; };
+		F0A4BFDA1370737A00393E41 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4BFD91370737A00393E41 /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00380BA13741DE10019B359 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F02325EA137143A600BADA57 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
+		F02325EB137143A600BADA57 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
+		F02325EC137143A600BADA57 /* AddLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLocationViewController.xib; sourceTree = "<group>"; };
+		F029B2831373EAF3005F82B3 /* SyncLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = SyncLocations.h; sourceTree = "<group>"; };
+		F029B2841373EAF3005F82B3 /* SyncLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncLocations.m; sourceTree = "<group>"; };
+		F088BD7F1369EA3F00A7E581 /* OccasionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccasionViewController.h; sourceTree = "<group>"; };
+		F088BD801369EA3F00A7E581 /* OccasionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccasionViewController.m; sourceTree = "<group>"; };
+		F088BD831369EB2C00A7E581 /* OccasionNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccasionNavController.m; sourceTree = "<group>"; };
+		F088BD851369EBC000A7E581 /* EventLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLocationViewController.h; sourceTree = "<group>"; };
+		F088BD861369EBC000A7E581 /* EventLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLocationViewController.m; sourceTree = "<group>"; };
+		F088BD8A1369F3C600A7E581 /* OccasionNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccasionNavController.h; sourceTree = "<group>"; };
+		F088BD8B1369F42A00A7E581 /* OccasionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OccasionView.xib; path = GreatNightOut/OccasionView.xib; sourceTree = "<group>"; };
+		F09C5B80136ADC630059BBCD /* NearbyOccasions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyOccasions.h; sourceTree = "<group>"; };
+		F09C5B81136ADC630059BBCD /* NearbyOccasions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyOccasions.m; sourceTree = "<group>"; };
+		F09C5B84136ADFD30059BBCD /* NearbyLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyLocations.h; sourceTree = "<group>"; };
+		F09C5B85136ADFD30059BBCD /* NearbyLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyLocations.m; sourceTree = "<group>"; };
+		F09C5B87136B190A0059BBCD /* SendPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPlist.h; sourceTree = "<group>"; };
+		F09C5B88136B190A0059BBCD /* SendPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPlist.m; sourceTree = "<group>"; };
 		F09E15EE1369A24500242A3B /* GreatNightOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreatNightOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09E15F21369A24500242A3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F09E15F41369A24500242A3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F09E15F61369A24500242A3B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F09E15FA1369A24500242A3B /* GreatNightOut-Info.plist */ = {isa = PBXFileReference; path = "GreatNightOut-Info.plist"; sourceTree = "<group>"; };
+		F09E15FA1369A24500242A3B /* GreatNightOut-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GreatNightOut-Info.plist"; sourceTree = "<group>"; };
 		F09E15FC1369A24500242A3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F09E15FE1369A24500242A3B /* GreatNightOut-Prefix.pch */ = {isa = PBXFileReference; path = "GreatNightOut-Prefix.pch"; sourceTree = "<group>"; };
+		F09E15FE1369A24500242A3B /* GreatNightOut-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GreatNightOut-Prefix.pch"; sourceTree = "<group>"; };
 		F09E15FF1369A24500242A3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F09E16011369A24500242A3B /* GreatNightOutAppDelegate.h */ = {isa = PBXFileReference; path = GreatNightOutAppDelegate.h; sourceTree = "<group>"; };
+		F09E16011369A24500242A3B /* GreatNightOutAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreatNightOutAppDelegate.h; sourceTree = "<group>"; };
 		F09E16021369A24500242A3B /* GreatNightOutAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreatNightOutAppDelegate.m; sourceTree = "<group>"; };
 		F09E16051369A24500242A3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		F09E16071369A24500242A3B /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		F09E16071369A24500242A3B /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		F09E16081369A24500242A3B /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		F09E160A1369A24500242A3B /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		F09E160A1369A24500242A3B /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		F09E160B1369A24500242A3B /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		F09E160E1369A24500242A3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
 		F09E16111369A24500242A3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+		F09E16181369A2A000242A3B /* EventLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLocation.h; sourceTree = "<group>"; };
+		F09E16191369A2A000242A3B /* EventLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLocation.m; sourceTree = "<group>"; };
+		F09E161A1369A2A000242A3B /* LocationGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationGetter.h; sourceTree = "<group>"; };
+		F09E161B1369A2A000242A3B /* LocationGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationGetter.m; sourceTree = "<group>"; };
+		F09E161E1369A2BB00242A3B /* Occasion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Occasion.h; sourceTree = "<group>"; };
+		F09E161F1369A2BB00242A3B /* Occasion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Occasion.m; sourceTree = "<group>"; };
+		F09E16211369A2BB00242A3B /* GreatNightOut.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GreatNightOut.xcdatamodel; sourceTree = "<group>"; };
+		F09E16241369A39A00242A3B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F09E16261369A3A000242A3B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F09E163D1369AFF400242A3B /* EventLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventLocationView.xib; path = GreatNightOut/EventLocationView.xib; sourceTree = "<group>"; };
+		F09E165D1369E0E900242A3B /* EventLocationNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLocationNavController.h; sourceTree = "<group>"; };
+		F09E165E1369E0E900242A3B /* EventLocationNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLocationNavController.m; sourceTree = "<group>"; };
+		F0A4BFD81370737A00393E41 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		F0A4BFD91370737A00393E41 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00380BB13741DE10019B359 /* MapKit.framework in Frameworks */,
+				F09E16271369A3A000242A3B /* CoreLocation.framework in Frameworks */,
+				F09E16251369A39A00242A3B /* CoreData.framework in Frameworks */,
 				F09E15F31369A24500242A3B /* UIKit.framework in Frameworks */,
 				F09E15F51369A24500242A3B /* Foundation.framework in Frameworks */,
 				F09E15F71369A24500242A3B /* CoreGraphics.framework in Frameworks */,
@@ -54,9 +111,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F088BD7D1369E9C800A7E581 /* OccasionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F088BD8A1369F3C600A7E581 /* OccasionNavController.h */,
+				F088BD831369EB2C00A7E581 /* OccasionNavController.m */,
+				F088BD7F1369EA3F00A7E581 /* OccasionViewController.h */,
+				F088BD801369EA3F00A7E581 /* OccasionViewController.m */,
+				F088BD8B1369F42A00A7E581 /* OccasionView.xib */,
+			);
+			name = OccasionControllers;
+			sourceTree = "<group>";
+		};
 		F09E15E31369A24500242A3B = {
 			isa = PBXGroup;
 			children = (
+				F00380BA13741DE10019B359 /* MapKit.framework */,
+				F0A4BFD61370711700393E41 /* RemoteModels */,
+				F088BD7D1369E9C800A7E581 /* OccasionControllers */,
+				F09E165C1369E06A00242A3B /* EventLocationViews */,
+				F0A4BFD71370717400393E41 /* Entities */,
+				F09E16201369A2BB00242A3B /* GreatNightOut.xcdatamodeld */,
 				F09E15F81369A24500242A3B /* GreatNightOut */,
 				F09E15F11369A24500242A3B /* Frameworks */,
 				F09E15EF1369A24500242A3B /* Products */,
@@ -74,6 +149,8 @@
 		F09E15F11369A24500242A3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F09E16261369A3A000242A3B /* CoreLocation.framework */,
+				F09E16241369A39A00242A3B /* CoreData.framework */,
 				F09E15F21369A24500242A3B /* UIKit.framework */,
 				F09E15F41369A24500242A3B /* Foundation.framework */,
 				F09E15F61369A24500242A3B /* CoreGraphics.framework */,
@@ -107,6 +184,51 @@
 				F09E15FF1369A24500242A3B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F09E165C1369E06A00242A3B /* EventLocationViews */ = {
+			isa = PBXGroup;
+			children = (
+				F088BD851369EBC000A7E581 /* EventLocationViewController.h */,
+				F088BD861369EBC000A7E581 /* EventLocationViewController.m */,
+				F09E165D1369E0E900242A3B /* EventLocationNavController.h */,
+				F09E165E1369E0E900242A3B /* EventLocationNavController.m */,
+				F09E163D1369AFF400242A3B /* EventLocationView.xib */,
+				F02325EA137143A600BADA57 /* AddLocationViewController.h */,
+				F02325EB137143A600BADA57 /* AddLocationViewController.m */,
+				F02325EC137143A600BADA57 /* AddLocationViewController.xib */,
+			);
+			name = EventLocationViews;
+			sourceTree = "<group>";
+		};
+		F0A4BFD61370711700393E41 /* RemoteModels */ = {
+			isa = PBXGroup;
+			children = (
+				F029B2831373EAF3005F82B3 /* SyncLocations.h */,
+				F029B2841373EAF3005F82B3 /* SyncLocations.m */,
+				F0A4BFD81370737A00393E41 /* Location.h */,
+				F0A4BFD91370737A00393E41 /* Location.m */,
+				F09C5B87136B190A0059BBCD /* SendPlist.h */,
+				F09C5B88136B190A0059BBCD /* SendPlist.m */,
+				F09C5B84136ADFD30059BBCD /* NearbyLocations.h */,
+				F09C5B85136ADFD30059BBCD /* NearbyLocations.m */,
+				F09C5B80136ADC630059BBCD /* NearbyOccasions.h */,
+				F09C5B81136ADC630059BBCD /* NearbyOccasions.m */,
+			);
+			name = RemoteModels;
+			sourceTree = "<group>";
+		};
+		F0A4BFD71370717400393E41 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F09E161A1369A2A000242A3B /* LocationGetter.h */,
+				F09E161B1369A2A000242A3B /* LocationGetter.m */,
+				F09E161E1369A2BB00242A3B /* Occasion.h */,
+				F09E161F1369A2BB00242A3B /* Occasion.m */,
+				F09E16181369A2A000242A3B /* EventLocation.h */,
+				F09E16191369A2A000242A3B /* EventLocation.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +282,9 @@
 				F09E16061369A24500242A3B /* MainWindow.xib in Resources */,
 				F09E160F1369A24500242A3B /* FirstView.xib in Resources */,
 				F09E16121369A24500242A3B /* SecondView.xib in Resources */,
+				F09E163E1369AFF400242A3B /* EventLocationView.xib in Resources */,
+				F088BD8C1369F42A00A7E581 /* OccasionView.xib in Resources */,
+				F02325EE137143A600BADA57 /* AddLocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +299,21 @@
 				F09E16031369A24500242A3B /* GreatNightOutAppDelegate.m in Sources */,
 				F09E16091369A24500242A3B /* FirstViewController.m in Sources */,
 				F09E160C1369A24500242A3B /* SecondViewController.m in Sources */,
+				F09E161C1369A2A000242A3B /* EventLocation.m in Sources */,
+				F09E161D1369A2A000242A3B /* LocationGetter.m in Sources */,
+				F09E16221369A2BB00242A3B /* Occasion.m in Sources */,
+				F09E16231369A2BB00242A3B /* GreatNightOut.xcdatamodeld in Sources */,
+				F09E165F1369E0E900242A3B /* EventLocationNavController.m in Sources */,
+				F088BD811369EA3F00A7E581 /* OccasionViewController.m in Sources */,
+				F088BD841369EB2C00A7E581 /* OccasionNavController.m in Sources */,
+				F088BD871369EBC000A7E581 /* EventLocationViewController.m in Sources */,
+				F09C5B82136ADC640059BBCD /* NearbyOccasions.m in Sources */,
+				F09C5B86136ADFD30059BBCD /* NearbyLocations.m in Sources */,
+				F09C5B89136B190B0059BBCD /* SendPlist.m in Sources */,
+				F0A4BFDA1370737A00393E41 /* Location.m in Sources */,
+				F02325ED137143A600BADA57 /* AddLocationViewController.m in Sources */,
+				F029B2851373EAF3005F82B3 /* SyncLocations.h in Sources */,
+				F029B2861373EAF3005F82B3 /* SyncLocations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +434,22 @@
 				F09E16171369A24500242A3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F09E16201369A2BB00242A3B /* GreatNightOut.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F09E16211369A2BB00242A3B /* GreatNightOut.xcdatamodel */,
+			);
+			currentVersion = F09E16211369A2BB00242A3B /* GreatNightOut.xcdatamodel */;
+			path = GreatNightOut.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F09E15E51369A24500242A3B /* Project object */;
 }
