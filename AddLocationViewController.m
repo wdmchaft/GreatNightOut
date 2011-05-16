@@ -53,7 +53,7 @@
     [newManagedObject setValue:lat forKey:@"lat"];
     [newManagedObject setValue:lng forKey:@"lng"];
     [newManagedObject setValue:[NSNumber numberWithFloat:0.00] forKey:@"distance"];
-    [newManagedObject setValue: @"N" forKey:@"status"];
+    [newManagedObject setValue: @"L" forKey:@"status"];
     
     // Save the context.
     NSError *error = nil;

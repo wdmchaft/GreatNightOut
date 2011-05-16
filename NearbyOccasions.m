@@ -194,6 +194,9 @@ NSManagedObjectContext *context;
     if(![context save:&error]) {
         NSLog(@"NBO: Error saving Occasion entity");
     }
+    else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"occasionListUpdated" object:nil];
+    }
 }
 @end
 

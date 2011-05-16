@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSString * street_additional;
 @property (nonatomic, retain) NSString * area;
 @property (nonatomic, retain) NSString * apartment;
-//@property (nonatomic, retain) NSString * city;
+//@property (nonatomic, retain) NSNumber * city;
 @property (nonatomic, retain) NSString * country;
 @property (nonatomic, retain) NSDecimalNumber * lat;
 @property (nonatomic, retain) NSDecimalNumber * lng;

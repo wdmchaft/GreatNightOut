@@ -1,22 +1,23 @@
-//
-//  OccasionViewController.m
+//XXXXXXXX
+//  EventLocationViewController.m
 //  GreatNightOut
 //
 //  Created by Christopher Alford on 12/04/2011.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "OccasionViewController.h"
+#import "EventLocationViewController.h"
 #import "GreatNightOutAppDelegate.h"
+#import "AddLocationViewController.h"
 
 #define RADIANS( degrees ) ( degrees * M_PI / 180 )
 #define DEGREES(radians) ((radians) * (180.0 / M_PI))
 
-@interface OccasionViewController ()
+@interface EventLocationViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation OccasionViewController
+@implementation EventLocationViewController
 
 @synthesize fetchedResultsController;
 @synthesize context;
@@ -26,15 +27,13 @@
     [super viewDidLoad];
     // Set up the edit and add buttons.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
+
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject)];
     self.navigationItem.rightBarButtonItem = addButton;
     [addButton release];
     
     // Register listener for data updates
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(updateView) 
-                                                 name:@"occasionListUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView) name:@"locationListUpdated" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,10 +58,10 @@
 
 /*
  // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	// Return YES for supported orientations.
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
  */
 
 // Customize the number of sections in the table view.
@@ -86,20 +85,20 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+
     // Configure the cell.
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
 /*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -133,11 +132,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+    AddLocationViewController *detailViewController = [[AddLocationViewController alloc] initWithNibName:@"AddLocationViewController" bundle:nil];
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [AddLocationViewController release];
      */
 }
 
@@ -173,7 +172,7 @@
     //cell.imageView.layer.masksToBounds = YES;
     //cell.imageView.layer.cornerRadius = 5.0;
     
-    NSString *cellText = [NSString stringWithFormat:@"%@",[[managedObject valueForKey:@"title"] description]];
+    NSString *cellText = [NSString stringWithFormat:@"%@ %@",[[managedObject valueForKey:@"title"] description],[[managedObject valueForKey:@"distance"] description]];
     
     cell.textLabel.text = cellText;
     cell.detailTextLabel.text = [[managedObject valueForKey:@"street"] description];
@@ -186,30 +185,17 @@
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:aContext];
     
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:@"New Occasion" forKey:@"title"];
-    [newManagedObject setValue:[NSDate date] forKey:@"expires"];
-    [newManagedObject setValue: @"11" forKey:@"building_number"];
-    [newManagedObject setValue:[NSNumber numberWithInt:0] forKey:@"id"];
-    [newManagedObject setValue:[NSNumber numberWithFloat:46.20107] forKey:@"lat"]; //46.20107/6.15713
-    [newManagedObject setValue:[NSNumber numberWithFloat:6.15713] forKey:@"lng"];
-    //[newManagedObject setValue:[NSNumber numberWithFloat:0.00] forKey:@"distance"];
-    [newManagedObject setValue: @"N" forKey:@"status"];
-    [newManagedObject setValue: @"Rue de la Terrassière" forKey:@"street"];
+    // Create your sub-view
+    AddLocationViewController *detailViewController = [[AddLocationViewController alloc] initWithNibName:@"AddLocationViewController" bundle:nil];
     
-    // Save the context.
-    NSError *error = nil;
-    if (![aContext save:&error])
-    {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
+    // Pass the managed object and context objects to the sub-view
+    detailViewController.newManagedObject = newManagedObject;
+    detailViewController.aContext = aContext;
+    
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    [AddLocationViewController release];
 }
 
 #pragma mark - Fetched results controller
@@ -228,11 +214,11 @@
     
     /*
      Set up the fetched results controller.
-     */
+    */
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Occasion" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"EventLocation" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     
     // Filter by distance
@@ -271,13 +257,13 @@
     [fetchRequest release];
     [sortDescriptor release];
     [sortDescriptors release];
-    
+
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error])
-    {
+        {
 	    /*
 	     Replace this implementation with code to handle the error appropriately.
-         
+
 	     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
 	     */
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -342,19 +328,19 @@
     [self.tableView endUpdates];
 }
 
-- (void)updateView
+/*
+// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
+ 
+ - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    // In the simplest, most efficient, case, reload the table view.
+    [self.tableView reloadData];
+}
+ */
+
+-(void) updateView
 {
     [self.tableView reloadData];
 }
-
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
 
 @end
