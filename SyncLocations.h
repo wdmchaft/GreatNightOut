@@ -17,10 +17,11 @@
 @property (nonatomic, retain) NSMutableArray *locations;
 @property (nonatomic, retain)NSMutableDictionary *location;
 
-- (void) createPlist;
+//- (void) createPlist;
 - (NSArray *) sendPlist;
-- (NSArray *)getStatusL;
+- (NSArray *) getStatusL;
+- (int) sync;
 
 // DEBUG
--(void) batchUpdate;
+//-(void) batchUpdate;
 @end

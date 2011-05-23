@@ -1,5 +1,5 @@
 //
-//  NearByLocations.h
+//  NearbyLocations.h
 //  GreatNightOut
 //
 //  Created by Christopher Alford on 20/04/2011.
@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface NearByLocations : NSObject <NSFetchedResultsControllerDelegate> {
+@interface NearbyLocations : NSObject { //<NSFetchedResultsControllerDelegate> {
 
 }
 

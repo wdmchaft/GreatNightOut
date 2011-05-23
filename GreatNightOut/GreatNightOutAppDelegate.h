@@ -17,6 +17,8 @@
 @interface GreatNightOutAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, LocationGetterDelegate> {
     
     CLLocation *lastKnownLocation;
+    
+    NSString *settingsRange;
 
 }
 
@@ -29,8 +31,12 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, retain) CLLocation *lastKnownLocation;
+@property (nonatomic, retain) NSString *settingsRange;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void)testPlistSend;
+- (void)updateNearbyLocations;
+- (void)updateNearbyOccations; 
 
 @end

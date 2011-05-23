@@ -202,7 +202,7 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    
+    NSString *settingsRange = [(GreatNightOutAppDelegate *)[[UIApplication sharedApplication] delegate] settingsRange];
     if (context == nil) { 
         context = [(GreatNightOutAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
     }
@@ -223,7 +223,7 @@
     
     // Filter by distance
     float radius = 6371; //km
-    float range = 1.5; //km
+    float range = [settingsRange floatValue]; //km
     // Lucias 46.20107/6.15713
     // Authers 46.204550/6.144100
     float lat = 46.204550;
@@ -240,7 +240,7 @@
     
     // Edit the sort key, change to number of friends or highest rating
     // You can't use distance as all the records haven't been updated
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];

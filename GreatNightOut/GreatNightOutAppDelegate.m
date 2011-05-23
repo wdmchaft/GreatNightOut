@@ -19,32 +19,28 @@
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
 @synthesize lastKnownLocation;
 @synthesize tabBarController=_tabBarController;
+@synthesize settingsRange;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Give yourself a default range
+    self.settingsRange = @"1.5";
 
-    //Test your plist send
-    SyncLocations *plist = [[SyncLocations alloc] init];
-    [plist createPlist];
-    [plist sendPlist];
-    //[plist batchUpdate];
-    [plist release];
+    // Setup your notifications
+    [NSNotificationCenter defaultCenter];
     
+    
+    // Test your plist send, run in background
+    [NSThread detachNewThreadSelector:@selector(testPlistSend) toTarget:self withObject:nil];
+    
+    [NSThread detachNewThreadSelector:@selector(updateNearbyLocations) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(updateNearbyOccations) toTarget:self withObject:nil];
     
     // Override point for customization after application launch.
     // get our physical location
     LocationGetter *locationGetter = [[LocationGetter alloc] init];
     locationGetter.delegate = self;
     [locationGetter startUpdates];
-    
-    //Read your property lists
-    NearbyLocations *nbl = [[NearbyLocations alloc] init];
-    [nbl getNearby:self.lastKnownLocation];
-    [nbl release];
-    
-    NearbyOccasions *nbo = [[NearbyOccasions alloc] init];
-    [nbo getNearby:self.lastKnownLocation];
-    [nbo release];
     
     // Add the tab bar controller's current view as a subview of the window
     self.window.rootViewController = self.tabBarController;
@@ -80,6 +76,8 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    [NSThread detachNewThreadSelector:@selector(updateNearbyLocations) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(updateNearbyOccations) toTarget:self withObject:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -118,12 +116,8 @@
      [alert release];  
      */
     // Update core data
-    NearbyLocations *nbl = [[NearbyLocations alloc] init];
-    [nbl getNearby:self.lastKnownLocation];
-    NearbyOccasions *nbo = [[NearbyOccasions alloc] init];
-    [nbo getNearby:self.lastKnownLocation];
-    [nbl release];
-    [nbo release];
+    [NSThread detachNewThreadSelector:@selector(updateNearbyLocations) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(updateNearbyOccations) toTarget:self withObject:nil];
 }
 
 
@@ -268,6 +262,39 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+- (void)testPlistSend
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    SyncLocations *plist = [[SyncLocations alloc] init];
+    
+    [plist sync];
+    //[plist createPlist];
+    //[plist sendPlist];
+    //[plist batchUpdate];
+    [plist release];
+    [pool release];
+}    
+
+- (void)updateNearbyLocations
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    //Read your property lists
+    NearbyLocations *nbl = [[NearbyLocations alloc] init];
+    [nbl getNearby:self.lastKnownLocation];
+    [nbl release];
+    [pool release];
+} 
+
+- (void)updateNearbyOccations
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NearbyOccasions *nbo = [[NearbyOccasions alloc] init];
+    [nbo getNearby:self.lastKnownLocation];
+    [nbo release];
+    [pool release];
+} 
+
 
 
 @end

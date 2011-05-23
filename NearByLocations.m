@@ -6,12 +6,12 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "NearByLocations.h"
+#import "NearbyLocations.h"
 #import "GreatNightOutAppDelegate.h"
 #import "EventLocation.h"
 
 
-@implementation NearByLocations
+@implementation NearbyLocations
 
 NSPropertyListFormat format;
 NSString *errorDesc = nil;
@@ -20,21 +20,29 @@ NSURLResponse *response;
 
 NSManagedObjectContext *context;
 
++(void) initWithLocation:(CLLocation *)location {
+    
+    [self getNearby:location];
+}
+
 -(void) getNearby:(CLLocation *)withLocation {
     
     // Location Data
+    
+    NSString *settingsRange = [(GreatNightOutAppDelegate *)[[UIApplication sharedApplication] delegate] settingsRange];
     
     NSNumber *lat = [[NSNumber alloc] initWithFloat:withLocation.coordinate.latitude];
     NSNumber *lng = [[NSNumber alloc] initWithFloat:withLocation.coordinate.longitude];
     
     // Read your plist
-    NSString *serverURL = [NSString stringWithFormat:@"http://api.gno.mobi/loc/getNearby/2/%f/%f/1.5/10/0", [lat floatValue], [lng floatValue]];
+    NSString *serverURL = [NSString stringWithFormat:@"http://api.gno.mobi/loc/getNearby/2/%f/%f/%@/10/0", 
+                           [lat floatValue], [lng floatValue], settingsRange];
     NSURL *pListURL = [NSURL URLWithString:serverURL ];
     // Lucias 46.20107/6.15713
     // Authers 46.204550/6.144100
-    [serverURL release];
-    [lat release];
-    [lng release];
+    //[serverURL release];
+    //[lat release];
+    //[lng release];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:pListURL];
     
@@ -100,17 +108,17 @@ NSManagedObjectContext *context;
             NSNumber *idFromNewItem = [eventLocationIDs objectAtIndex:currentNewItem];
             NSNumber *idFromFetchedItem = [[eventsMatchingIDs objectAtIndex:currentFetchedItem] id];
             
-            NSLog(@"Loop : % d matching new item : %@ with fetched item : %@",currentFetchedItem, idFromNewItem, idFromFetchedItem);
+            NSLog(@"NBL: Loop : % d matching new item : %@ with fetched item : %@",currentFetchedItem, idFromNewItem, idFromFetchedItem);
             
             // Do we have a match?
             if([idFromNewItem intValue] == [idFromFetchedItem intValue]) {
-                NSLog(@"Item already exists, updating");
+                NSLog(@"NBL: Item already exists, updating");
                 
                 NSDictionary *entry = [entries objectAtIndex:currentNewItem];
                 [[eventsMatchingIDs objectAtIndex:currentFetchedItem] setDistance:[entry objectForKey:@"distance"]];
                 NSError *error;
                 if(![context save:&error]) {
-                    NSLog(@"Error saving EventLocation entity");
+                    NSLog(@"NBL: Error saving EventLocation entity");
                 }
                 
                 // Are there any more fetched items
@@ -127,7 +135,7 @@ NSManagedObjectContext *context;
             // Is the new item before the fetched one, would happen if location changed
             else if([idFromNewItem intValue] < [idFromFetchedItem intValue]) {
                 // Store the new item
-                NSLog(@"New item <");
+                NSLog(@"NBL: New item <");
                 NSDictionary *entry = [entries objectAtIndex:currentNewItem];
                 [self storeItem:entry];
                 // No need to increment currentFetchedItem
@@ -152,7 +160,7 @@ NSManagedObjectContext *context;
         // See if there any more new items to be added
         if((currentNewItem) < countOfNewItems) {
             for (int i = currentNewItem; i < countOfNewItems; i++){
-                NSLog(@"Additional New item");
+                NSLog(@"NBL: Additional New item");
                 NSDictionary *entry = [entries objectAtIndex:i+1];
                 [self storeItem:entry];
             }
@@ -162,7 +170,7 @@ NSManagedObjectContext *context;
 }
 -(void) storeItem:(NSDictionary *)entry {
     
-    NSLog(@"Title: %@", [entry objectForKey:@"title"]);
+    NSLog(@"NBL: Title: %@", [entry objectForKey:@"title"]);
     
     EventLocation *eventLocationEntity = (EventLocation *)[NSEntityDescription
                                    insertNewObjectForEntityForName:@"EventLocation" 
@@ -182,7 +190,11 @@ NSManagedObjectContext *context;
     // Save the new entity
     NSError *error;
     if(![context save:&error]) {
-        NSLog(@"Error saving EventLocation entity");
+        NSLog(@"NBL: Error saving EventLocation entity");
+    }
+    else {
+        // Send notification.
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"locationListUpdated" object:nil];
     }
 
     
